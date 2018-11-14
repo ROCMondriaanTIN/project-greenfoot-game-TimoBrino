@@ -14,6 +14,7 @@ public class Hero extends Mover {
     private boolean isOnGround;
     private int walkStatus;
     int status = 0;
+    private String direction = "right";
     private GreenfootImage walkIm1;
     private GreenfootImage walkIm2;
     private GreenfootImage walkIm3;
@@ -70,12 +71,9 @@ public class Hero extends Mover {
         return (x - (x * 2));
     }
 
-    public void handleInput() {
-   
-        //on ground check and handling
-
+   public void handleInput() {
+        //gekregen van gijs de lange en zelf iets veranderd.
         width = getImage().getWidth() / 2;
-
         Tile tile = (Tile) getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Tile.class);
         if (tile == null) {
             tile = (Tile) getOneObjectAtOffset(this.width - 3, getImage().getHeight() / 2 + 1, Tile.class);
@@ -83,75 +81,72 @@ public class Hero extends Mover {
         if (tile == null) {
             tile = (Tile) getOneObjectAtOffset((int) posToNeg(this.width) + 3, getImage().getHeight() / 2 + 1, Tile.class);
         }
-
         if (tile != null && tile.isSolid) {
             isOnGround = true;
         } else {
             isOnGround = false;
         }
         if (Greenfoot.isKeyDown("space")) {
-
             if (isOnGround) {
-                velocityY = -15;
+                velocityY = -17;
                 animationJump(getWidth(), getHeight(), 1);
             }
-
         }
-
-        if (Greenfoot.isKeyDown("left")) {
+        if (Greenfoot.isKeyDown("a")) {
             velocityX = -10;
-            animationWalk(getWidth(), getHeight(), 1, false);
-        } else if (Greenfoot.isKeyDown("right")) {
+            direction = "left";
+            animationWalk(getWidth(), getHeight(), 1);
+        } else if (Greenfoot.isKeyDown("d")) {
             velocityX = 10;
-            animationWalk(getWidth(), getHeight(), 1, true);
+            direction = "right";
+            animationWalk(getWidth(), getHeight(), 1);
         } else {
             animationStand(getWidth(), getHeight(), 1);
         }
     }
-     public void animationWalk(int width, int heigth, int player, boolean right) {
-        
-        if (status == 3) {
+    public void animationWalk(int width, int heigth, int player) {
+        if (status == 2) {
             if (walkStatus >= 11) {
                 walkStatus = 1;
             }
-            
             if (isOnGround) {
                 setImage("p" + player + "_walk"
                         + walkStatus + ".png");
-            }else{
+            } else {
                 setImage("p" + player + "_jump.png");
             }
-            if (right){
-                right = false;
-                
-            }else if (!right){
-                right = true;
-                getImage().mirrorHorizontally();
-            }
+            mirror();
             walkStatus++;
             status = 0;
         } else {
-            
             status++;
         }
-        
         getImage().scale(width, heigth);
     }
-      public void animationJump(int width, int heigth, int player) {
+    public void animationJump(int width, int heigth, int player) {
         setImage("p" + player + "_jump.png");
+        mirror();
         getImage().scale(width, heigth);
     }
-
     public void animationStand(int width, int heigth, int player) {
         if (isOnGround) {
             setImage("p" + player + "_walk1.png");
             getImage().scale(width, heigth);
             walkStatus = 1;
-        }else{
+        } else {
             setImage("p" + player + "_jump.png");
         }
+        mirror();
         getImage().scale(width, heigth);
     }
+    public void mirror() {
+        if (direction.equals("left")) {
+
+            getImage().mirrorHorizontally();
+
+        }
+    }
+
     public int getWidth() {
         return getImage().getWidth();
     }
