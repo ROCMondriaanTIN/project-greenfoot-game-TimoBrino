@@ -11,10 +11,14 @@ public class Hero extends Mover {
     private final double acc;
     private final double drag;
     private int width;
+    private int lives = 2;
     private boolean isOnGround;
     private int walkStatus;
     int status = 0;
     private String direction = "right";
+    private int spawnX;
+    private int spawnY;
+
     private GreenfootImage walkIm1;
     private GreenfootImage walkIm2;
     private GreenfootImage walkIm3;
@@ -28,13 +32,16 @@ public class Hero extends Mover {
     private GreenfootImage walkIm11;
     private GreenfootImage jump1;
 
-    public Hero() {
+    public Hero(String image, int spawnX, int spawnY) {
         super();
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
+        this.spawnX = spawnX;
+        this.spawnY = spawnY;
+
         setImage("p1.png");
-        //getImage().mirrorHorizontally();
+
         walkIm1 = new GreenfootImage("p1_walk1.png");
         walkIm2 = new GreenfootImage("p1_walk2.png");
         walkIm3 = new GreenfootImage("p1_walk3.png");
@@ -52,26 +59,46 @@ public class Hero extends Mover {
     @Override
     public void act() {
         handleInput();
-        
+
+        System.out.println(getX());
+        System.out.println(getY());
+        System.out.println("");
         velocityX *= drag;
         velocityY += acc;
         if (velocityY > gravity) {
             velocityY = gravity;
         }
         applyVelocity();
+        checkForBlock();
+        checkEnemy();
+    }
 
+    public void checkEnemy() {
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
-                getWorld().removeObject(this);
+                dood();
                 break;
             }
         }
+
     }
-     private double posToNeg(double x) {
+
+    public void checkForBlock() {
+        for (Tile tile : getIntersectingObjects(Tile.class)) {
+            if (tile != null) {
+                if (tile.getImage().toString().contains("liquid") && !tile.getImage().toString().contains("Top")) {
+                    dood();
+                    break;
+                }
+            }
+        }
+    }
+
+    private double posToNeg(double x) {
         return (x - (x * 2));
     }
 
-   public void handleInput() {
+    public void handleInput() {
         //gekregen van gijs de lange en zelf iets veranderd.
         width = getImage().getWidth() / 2;
         Tile tile = (Tile) getOneObjectAtOffset(0, getImage().getHeight() / 2 + 1, Tile.class);
@@ -104,6 +131,7 @@ public class Hero extends Mover {
             animationStand(getWidth(), getHeight(), 1);
         }
     }
+
     public void animationWalk(int width, int heigth, int player) {
         if (status == 2) {
             if (walkStatus >= 11) {
@@ -123,11 +151,13 @@ public class Hero extends Mover {
         }
         getImage().scale(width, heigth);
     }
+
     public void animationJump(int width, int heigth, int player) {
         setImage("p" + player + "_jump.png");
         mirror();
         getImage().scale(width, heigth);
     }
+
     public void animationStand(int width, int heigth, int player) {
         if (isOnGround) {
             setImage("p" + player + "_walk1.png");
@@ -139,12 +169,24 @@ public class Hero extends Mover {
         mirror();
         getImage().scale(width, heigth);
     }
+
     public void mirror() {
         if (direction.equals("left")) {
 
             getImage().mirrorHorizontally();
 
         }
+    }
+
+    public void dood() {
+        lives--;
+        if (lives > 0) {
+            setLocation(spawnX, spawnY);
+        } else {
+            getWorld().removeObject(this);
+            
+        }
+        
     }
 
     public int getWidth() {
@@ -154,6 +196,4 @@ public class Hero extends Mover {
     public int getHeight() {
         return getImage().getHeight();
     }
-  }
- 
-
+}

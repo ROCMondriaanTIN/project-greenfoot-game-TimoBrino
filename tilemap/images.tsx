@@ -517,181 +517,181 @@
  <tile id="171">
   <image width="70" height="70" source="../images/Images carefulll/deel 1/window.png"/>
  </tile>
- <tile id="172">
+ <tile id="231">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/bomb.png"/>
  </tile>
- <tile id="173">
+ <tile id="232">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/bombFlash.png"/>
  </tile>
- <tile id="174">
+ <tile id="233">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/bush.png"/>
  </tile>
- <tile id="175">
+ <tile id="234">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/buttonBlue.png"/>
  </tile>
- <tile id="176">
+ <tile id="235">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/buttonBlue_pressed.png"/>
  </tile>
- <tile id="177">
+ <tile id="236">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/buttonGreen.png"/>
  </tile>
- <tile id="178">
+ <tile id="237">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/buttonGreen_pressed.png"/>
  </tile>
- <tile id="179">
+ <tile id="238">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/buttonRed.png"/>
  </tile>
- <tile id="180">
+ <tile id="239">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/buttonRed_pressed.png"/>
  </tile>
- <tile id="181">
+ <tile id="240">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/buttonYellow.png"/>
  </tile>
- <tile id="182">
+ <tile id="241">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/buttonYellow_pressed.png"/>
  </tile>
- <tile id="183">
+ <tile id="242">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/cactus.png"/>
  </tile>
- <tile id="184">
+ <tile id="243">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/chain.png"/>
  </tile>
- <tile id="185">
+ <tile id="244">
   <image width="128" height="71" source="../images/Images carefulll/deel 2/cloud1.png"/>
  </tile>
- <tile id="186">
+ <tile id="245">
   <image width="129" height="71" source="../images/Images carefulll/deel 2/cloud2.png"/>
  </tile>
- <tile id="187">
+ <tile id="246">
   <image width="129" height="71" source="../images/Images carefulll/deel 2/cloud3.png"/>
  </tile>
- <tile id="188">
+ <tile id="247">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/coinBronze.png"/>
  </tile>
- <tile id="189">
+ <tile id="248">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/coinGold.png"/>
  </tile>
- <tile id="190">
+ <tile id="249">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/coinSilver.png"/>
  </tile>
- <tile id="191">
+ <tile id="250">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/fireball.png"/>
  </tile>
- <tile id="192">
+ <tile id="251">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagBlue.png"/>
  </tile>
- <tile id="193">
+ <tile id="252">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagBlue2.png"/>
  </tile>
- <tile id="194">
+ <tile id="253">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagBlueHanging.png"/>
  </tile>
- <tile id="195">
+ <tile id="254">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagGreen.png"/>
  </tile>
- <tile id="196">
+ <tile id="255">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagGreen2.png"/>
  </tile>
- <tile id="197">
+ <tile id="256">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagGreenHanging.png"/>
  </tile>
- <tile id="198">
+ <tile id="257">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagRed.png"/>
  </tile>
- <tile id="199">
+ <tile id="258">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagRed2.png"/>
  </tile>
- <tile id="200">
+ <tile id="259">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagRedHanging.png"/>
  </tile>
- <tile id="201">
+ <tile id="260">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagYellow.png"/>
  </tile>
- <tile id="202">
+ <tile id="261">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagYellow2.png"/>
  </tile>
- <tile id="203">
+ <tile id="262">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/flagYellowHanging.png"/>
  </tile>
- <tile id="204">
+ <tile id="263">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/gemBlue.png"/>
  </tile>
- <tile id="205">
+ <tile id="264">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/gemGreen.png"/>
  </tile>
- <tile id="206">
+ <tile id="265">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/gemRed.png"/>
  </tile>
- <tile id="207">
+ <tile id="266">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/gemYellow.png"/>
  </tile>
- <tile id="208">
+ <tile id="267">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/keyBlue.png"/>
  </tile>
- <tile id="209">
+ <tile id="268">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/keyGreen.png"/>
  </tile>
- <tile id="210">
+ <tile id="269">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/keyRed.png"/>
  </tile>
- <tile id="211">
+ <tile id="270">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/keyYellow.png"/>
  </tile>
- <tile id="212">
+ <tile id="271">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/mushroomBrown.png"/>
  </tile>
- <tile id="213">
+ <tile id="272">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/mushroomRed.png"/>
  </tile>
- <tile id="214">
+ <tile id="273">
   <image width="19" height="14" source="../images/Images carefulll/deel 2/particleBrick1a.png"/>
  </tile>
- <tile id="215">
+ <tile id="274">
   <image width="21" height="21" source="../images/Images carefulll/deel 2/particleBrick1b.png"/>
  </tile>
- <tile id="216">
+ <tile id="275">
   <image width="19" height="14" source="../images/Images carefulll/deel 2/particleBrick2a.png"/>
  </tile>
- <tile id="217">
+ <tile id="276">
   <image width="21" height="21" source="../images/Images carefulll/deel 2/particleBrick2b.png"/>
  </tile>
- <tile id="218">
+ <tile id="277">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/plant.png"/>
  </tile>
- <tile id="219">
+ <tile id="278">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/plantPurple.png"/>
  </tile>
- <tile id="220">
+ <tile id="279">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/rock.png"/>
  </tile>
- <tile id="221">
+ <tile id="280">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/snowhill.png"/>
  </tile>
- <tile id="222">
+ <tile id="281">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/spikes.png"/>
  </tile>
- <tile id="223">
+ <tile id="282">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/springboardDown.png"/>
  </tile>
- <tile id="224">
+ <tile id="283">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/springboardUp.png"/>
  </tile>
- <tile id="225">
+ <tile id="284">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/star.png"/>
  </tile>
- <tile id="226">
+ <tile id="285">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/switchLeft.png"/>
  </tile>
- <tile id="227">
+ <tile id="286">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/switchMid.png"/>
  </tile>
- <tile id="228">
+ <tile id="287">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/switchRight.png"/>
  </tile>
- <tile id="229">
+ <tile id="288">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/weight.png"/>
  </tile>
- <tile id="230">
+ <tile id="289">
   <image width="70" height="70" source="../images/Images carefulll/deel 2/weightChained.png"/>
  </tile>
 </tileset>

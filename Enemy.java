@@ -12,10 +12,13 @@ public class Enemy extends Mover {
     private int xMax;
     private boolean firstAct;
     private int speed;
+    private GreenfootImage walkSnail1 = new GreenfootImage("snailWalk1.png");
+    private GreenfootImage walkSnail2 = new GreenfootImage("snailWalk1.png");
+    private GreenfootImage snailShell = new GreenfootImage("snailShell.png");
+    private GreenfootImage snailShell_upsidedown = new GreenfootImage("snailShell_upsidedown.png");
 
     public Enemy() {
         super();
-        setImage("snailWalk1.png");
         getImage().mirrorHorizontally();
         walkRange = 140;
         firstAct = true;
