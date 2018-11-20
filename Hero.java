@@ -59,10 +59,10 @@ public class Hero extends Mover {
     @Override
     public void act() {
         handleInput();
-
-        System.out.println(getX());
-        System.out.println(getY());
-        System.out.println("");
+        atWorldEdge();
+//        System.out.println(getX());
+//        System.out.println(getY());
+//        System.out.println("");
         velocityX *= drag;
         velocityY += acc;
         if (velocityY > gravity) {
@@ -80,7 +80,15 @@ public class Hero extends Mover {
                 break;
             }
         }
-
+    }
+        
+    public void checkCoin() {
+        for (Actor coin : getIntersectingObjects(Coin.class)) {
+            if (coin != null) {
+                dood();
+                break;
+            }
+        }
     }
 
     public void checkForBlock() {
@@ -90,8 +98,21 @@ public class Hero extends Mover {
                     dood();
                     break;
                 }
+                if (tile.getImage().toString().contains("Silver")){
+                    getWorld().removeObject(tile);
+                }
+                else if (tile.getImage().toString().contains("Gold")){
+                    getWorld().removeObject(tile);
+                }
+                else if (tile.getImage().toString().contains("gem")){
+                    getWorld().removeObject(tile);
+                }
+                else if (tile.getImage().toString().contains("key")){
+                    getWorld().removeObject(tile);
+                }
             }
         }
+        
     }
 
     private double posToNeg(double x) {
