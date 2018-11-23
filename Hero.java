@@ -18,6 +18,7 @@ public class Hero extends Mover {
     private String direction = "right";
     private int spawnX;
     private int spawnY;
+    private int coin = 0;
 
     private GreenfootImage walkIm1;
     private GreenfootImage walkIm2;
@@ -71,6 +72,8 @@ public class Hero extends Mover {
         applyVelocity();
         checkForBlock();
         checkEnemy();
+        checkFireBall();
+
     }
 
     public void checkEnemy() {
@@ -81,10 +84,10 @@ public class Hero extends Mover {
             }
         }
     }
-        
-    public void checkCoin() {
-        for (Actor coin : getIntersectingObjects(Coin.class)) {
-            if (coin != null) {
+    
+    public void checkFireBall() {
+        for (Actor fireball : getIntersectingObjects(FireBall.class)) {
+            if (fireball != null) {
                 dood();
                 break;
             }
@@ -94,25 +97,27 @@ public class Hero extends Mover {
     public void checkForBlock() {
         for (Tile tile : getIntersectingObjects(Tile.class)) {
             if (tile != null) {
-                if (tile.getImage().toString().contains("liquid") && !tile.getImage().toString().contains("Top")) {
+                String name = tile.getImage().toString();
+                if (name.contains("liquid") && !name.contains("Top")) {
                     dood();
                     break;
                 }
-                if (tile.getImage().toString().contains("Silver")){
+                if (name.contains("Silver")) {
                     getWorld().removeObject(tile);
-                }
-                else if (tile.getImage().toString().contains("Gold")){
+                    coin++;
+                    getLives();
+                } else if (name.contains("Gold")) {
                     getWorld().removeObject(tile);
-                }
-                else if (tile.getImage().toString().contains("gem")){
+                    coin += 2;
+                    getLives();
+                } else if (name.contains("gem")) {
                     getWorld().removeObject(tile);
-                }
-                else if (tile.getImage().toString().contains("key")){
+                } else if (name.contains("key")) {
                     getWorld().removeObject(tile);
                 }
             }
         }
-        
+
     }
 
     private double posToNeg(double x) {
@@ -140,11 +145,11 @@ public class Hero extends Mover {
                 animationJump(getWidth(), getHeight(), 1);
             }
         }
-        if (Greenfoot.isKeyDown("a")) {
+        if (Greenfoot.isKeyDown("left")) {
             velocityX = -10;
             direction = "left";
             animationWalk(getWidth(), getHeight(), 1);
-        } else if (Greenfoot.isKeyDown("d")) {
+        } else if (Greenfoot.isKeyDown("right")) {
             velocityX = 10;
             direction = "right";
             animationWalk(getWidth(), getHeight(), 1);
@@ -193,9 +198,7 @@ public class Hero extends Mover {
 
     public void mirror() {
         if (direction.equals("left")) {
-
             getImage().mirrorHorizontally();
-
         }
     }
 
@@ -205,9 +208,16 @@ public class Hero extends Mover {
             setLocation(spawnX, spawnY);
         } else {
             getWorld().removeObject(this);
-            
+
         }
-        
+
+    }
+
+    public void getLives() {
+        if (coin >= 40) {
+            lives++;
+            coin -= 40;
+        }
     }
 
     public int getWidth() {

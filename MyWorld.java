@@ -111,6 +111,7 @@ public class MyWorld extends World {
         addObject(camera, 0, 0);
         addObject(hero, spawnX, spawnY);
         addObject(new Enemy(), 1879, 2290);
+        addObject(new FireBall(), 2210, 2388);
         
         // Initialiseren van de CollisionEngine zodat de speler niet door de tile heen kan lopen.
         // De collision engine kijkt alleen naar de tiles die de variabele solid op true hebben staan.
