@@ -43,19 +43,25 @@ public class Enemy extends Mover {
             xMax = x + walkRange / 2;
         }
 
-        velocityX = speed;
-        applyVelocity();
-        if (getX() >= xMax) {
-            speed *= -1;
-            x = xMax;
-            direction = "left";
-            
-        } else if (getX() <= xMin) {
-            speed *= -1;
-            x = xMin;
-            direction = "right";
+         if (!getImage().toString().contains("upside")) {
+            velocityX = speed;
+            applyVelocity();
+            if (getX() >= xMax) {
+                speed *= -1;
+                x = xMax;
+                direction = "left";
+            } else if (getX() <= xMin) {
+                speed *= -1;
+                x = xMin;
+                direction = "right";
+
+            }
+           Change();
+        }else{
+            speed = 0;
+            velocityX = speed;
+            applyVelocity();
         }
-        Change();
     }
     public void Change(){
         
@@ -74,5 +80,10 @@ public class Enemy extends Mover {
         }else{
             status ++;
         }
+        
+    } 
+    public void dood() {
+
+        setImage("snailShell_upsidedown.png");
     }
 }

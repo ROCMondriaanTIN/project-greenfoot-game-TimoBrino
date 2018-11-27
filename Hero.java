@@ -77,10 +77,16 @@ public class Hero extends Mover {
     }
 
     public void checkEnemy() {
-        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
+        for (Enemy enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
-                dood();
-                break;
+                if (!enemy.getImage().toString().contains("upside")) {
+                    if (velocityY > 1) {
+                      enemy.dood();
+                    } else {
+                        dood();
+                    }
+                    break;
+                }
             }
         }
     }
@@ -226,5 +232,9 @@ public class Hero extends Mover {
 
     public int getHeight() {
         return getImage().getHeight();
+    }
+
+    void setSpawn(int heroSpawnX, int heroSpawnY) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
