@@ -1,6 +1,5 @@
 
 import greenfoot.*;
-import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,35 +11,22 @@ import java.util.List;
  *
  * @author Timo van Zuijlen
  */
-public class BeginScherm extends Actor{
+
+
+public class BeginScherm extends World{
     
-      private int player;
-
-    public BeginScherm(int player) {
-        setImage("p" + player + "_stand.png");
-        this.player = player;
+    public BeginScherm() {
+        super(1000, 800, 1);
+        Greenfoot.start();
+        this.setBackground("bg2.png");
+        addObject(new Titel(), 475, 200);
     }
-    public BeginScherm(String text, int size) {
-        setImage(new GreenfootImage(text, size, Color.YELLOW, new Color(0, 0, 0, 0), Color.RED));
-
+    
+    public void act(){
+        if (Greenfoot.isKeyDown("enter")) Greenfoot.setWorld(new MyWorld());
+       
+        
     }
-      @Override
-    public void act() {
-        // Add your action code here.
-        if (getImage().toString().contains("Player")) {
-            MouseInfo mouse = Greenfoot.getMouseInfo();
-            if (mouse != null) {
-                List objects = getWorld().getObjectsAt(mouse.getX(), mouse.getY(), BeginScherm.class);
-                for (Object object : objects) {
-                    if (object == this) {
-                        setImage("Player/p" + player + "_front.png");
-
-                    } else {
-                        setImage("Player/p" + player + "_stand.png");
-                    }
-
-                }
-            }
-        }
-    }
+    
+     
 }
