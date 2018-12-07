@@ -18,8 +18,9 @@ public class Hero extends Mover {
     private String direction = "right";
     private int spawnX;
     private int spawnY;
+    private int player;
     private int coin = 0;
-    int level;
+    private int level;
 
     private GreenfootImage walkIm1;
     private GreenfootImage walkIm2;
@@ -40,7 +41,7 @@ public class Hero extends Mover {
         acc = 0.6;
         drag = 0.8;
 
-        setImage("p1.png");
+       
 
         walkIm1 = new GreenfootImage("p1_walk1.png");
         walkIm2 = new GreenfootImage("p1_walk2.png");
@@ -147,23 +148,23 @@ public class Hero extends Mover {
         if (Greenfoot.isKeyDown("space")) {
             if (isOnGround) {
                 velocityY = -17;
-                animationJump(getWidth(), getHeight(), 1);
+                animationJump(getWidth(), getHeight());
             }
         }
         if (Greenfoot.isKeyDown("left")) {
             velocityX = -10;
             direction = "left";
-            animationWalk(getWidth(), getHeight(), 1);
+            animationWalk(getWidth(), getHeight());
         } else if (Greenfoot.isKeyDown("right")) {
             velocityX = 10;
             direction = "right";
-            animationWalk(getWidth(), getHeight(), 1);
+            animationWalk(getWidth(), getHeight());
         } else {
-            animationStand(getWidth(), getHeight(), 1);
+            animationStand(getWidth(), getHeight());
         }
     }
 
-    public void animationWalk(int width, int heigth, int player) {
+    public void animationWalk(int width, int heigth) {
         if (status == 2) {
             if (walkStatus >= 11) {
                 walkStatus = 1;
@@ -183,13 +184,13 @@ public class Hero extends Mover {
         getImage().scale(width, heigth);
     }
 
-    public void animationJump(int width, int heigth, int player) {
+    public void animationJump(int width, int heigth) {
         setImage("p" + player + "_jump.png");
         mirror();
         getImage().scale(width, heigth);
     }
 
-    public void animationStand(int width, int heigth, int player) {
+    public void animationStand(int width, int heigth) {
         if (isOnGround) {
             setImage("p" + player + "_walk1.png");
             getImage().scale(width, heigth);
@@ -212,7 +213,7 @@ public class Hero extends Mover {
         if (lives > 0) {
             setLocation(spawnX, spawnY);
         } else {
-            getWorld().removeObject(this);
+            Greenfoot.setWorld(new GameOver(1, player));
 
         }
 
@@ -229,6 +230,12 @@ public class Hero extends Mover {
         this.level = level;
     }
     
+    public void setPlayer(int player) {
+        setImage("p1_stand.png");
+        setImage("p2_stand.png");
+        setImage("p3_stand.png");
+        this.player = player;
+    }
 
     public int getWidth() {
         return getImage().getWidth();

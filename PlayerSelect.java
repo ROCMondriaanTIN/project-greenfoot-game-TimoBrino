@@ -16,9 +16,6 @@ public class PlayerSelect extends Actor {
   
 
     private int player;
-    private GreenfootImage player1;
-    private GreenfootImage player2;
-    private GreenfootImage player3;
 
     public PlayerSelect(int player) {
         setImage("p" + player + "_stand.png");

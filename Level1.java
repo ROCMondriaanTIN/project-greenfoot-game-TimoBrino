@@ -71,6 +71,7 @@ public class Level1 extends MyWorld {
 
     @Override
     public void load() {
+        hero.setPlayer(player);
 
         Greenfoot.setWorld(this);
         create(1, 300, 3032);
