@@ -19,6 +19,7 @@ public class Hero extends Mover {
     private int spawnX;
     private int spawnY;
     private int coin = 0;
+    int level;
 
     private GreenfootImage walkIm1;
     private GreenfootImage walkIm2;
@@ -33,13 +34,11 @@ public class Hero extends Mover {
     private GreenfootImage walkIm11;
     private GreenfootImage jump1;
 
-    public Hero(String image, int spawnX, int spawnY) {
+    public Hero() {
         super();
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
-        this.spawnX = spawnX;
-        this.spawnY = spawnY;
 
         setImage("p1.png");
 
@@ -225,6 +224,11 @@ public class Hero extends Mover {
             coin -= 40;
         }
     }
+    
+    public void setLevel(int level) {
+        this.level = level;
+    }
+    
 
     public int getWidth() {
         return getImage().getWidth();
@@ -235,6 +239,8 @@ public class Hero extends Mover {
     }
 
     void setSpawn(int heroSpawnX, int heroSpawnY) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.spawnX = heroSpawnX;
+        this.spawnY = heroSpawnY;
+        
     }
 }

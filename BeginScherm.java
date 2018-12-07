@@ -14,16 +14,29 @@ import greenfoot.*;
 
 
 public class BeginScherm extends World{
+        
+    public static final WorldRegistry worldRegistry = new WorldRegistry();
+
     
     public BeginScherm() {
         super(1000, 800, 1);
         Greenfoot.start();
         this.setBackground("bg2.png");
+        createObject();
+        setLevels();
+    }
+     public void createObject() {
         addObject(new Titel(), 475, 200);
+
+        addObject(new PlayerSelect(1), 150, 500);
+        addObject(new PlayerSelect(2), 500, 500);
+        addObject(new PlayerSelect(3), 850, 500);
     }
     
-    public void act(){
-        if (Greenfoot.isKeyDown("enter")) Greenfoot.setWorld(new MyWorld());
+    public void setLevels(){
+        MyWorld.firstTime = true;
+        worldRegistry.registerLevel(1, new Level1());
+        worldRegistry.registerLevel(2, new Level1());
        
         
     }

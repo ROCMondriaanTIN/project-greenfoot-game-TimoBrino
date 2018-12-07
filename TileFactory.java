@@ -355,19 +355,23 @@ public class TileFactory {
                 break;
             case 84:
                 tile = new Tile("hill_large.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
-                tile.isSolid = true;
+                tile.isSolid = false;
+                tile.getImage().scale(48, 146);
                 break;
             case 85:
                 tile = new Tile("hill_largeAlt.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
-                tile.isSolid = true;
+                tile.isSolid = false;
+                tile.getImage().scale(48, 146);
                 break;
             case 86:
                 tile = new Tile("hill_small.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
-                tile.isSolid = true;
+                tile.isSolid = false;
+                tile.getImage().scale(48, 106);
                 break;
             case 87:
                 tile = new Tile("hill_smallAlt.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
-                tile.isSolid = true;
+                tile.isSolid = false;
+                tile.getImage().scale(48, 106);
                 break;
             case 88:
                 tile = new Tile("ladder_mid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
