@@ -41,8 +41,6 @@ public class Hero extends Mover {
         acc = 0.6;
         drag = 0.8;
 
-       
-
         walkIm1 = new GreenfootImage("p1_walk1.png");
         walkIm2 = new GreenfootImage("p1_walk2.png");
         walkIm3 = new GreenfootImage("p1_walk3.png");
@@ -81,7 +79,7 @@ public class Hero extends Mover {
             if (enemy != null) {
                 if (!enemy.getImage().toString().contains("upside")) {
                     if (velocityY > 1) {
-                      enemy.dood();
+                        enemy.dood();
                     } else {
                         dood();
                     }
@@ -90,7 +88,7 @@ public class Hero extends Mover {
             }
         }
     }
-    
+
     public void checkFireBall() {
         for (Actor fireball : getIntersectingObjects(FireBall.class)) {
             if (fireball != null) {
@@ -213,8 +211,7 @@ public class Hero extends Mover {
         if (lives > 0) {
             setLocation(spawnX, spawnY);
         } else {
-            Greenfoot.setWorld(new GameOver(1, player));
-
+            Greenfoot.setWorld(new GameOver(player));
         }
 
     }
@@ -225,11 +222,11 @@ public class Hero extends Mover {
             coin -= 40;
         }
     }
-    
+
     public void setLevel(int level) {
         this.level = level;
     }
-    
+
     public void setPlayer(int player) {
         setImage("p1_stand.png");
         setImage("p2_stand.png");
@@ -248,6 +245,6 @@ public class Hero extends Mover {
     void setSpawn(int heroSpawnX, int heroSpawnY) {
         this.spawnX = heroSpawnX;
         this.spawnY = heroSpawnY;
-        
+
     }
 }

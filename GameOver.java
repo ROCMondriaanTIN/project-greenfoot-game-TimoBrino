@@ -13,9 +13,12 @@ import greenfoot.World;
  */
 public class GameOver extends World{
     
-    public GameOver(int level , int player) {
+    public GameOver(int player) {
         super(1000, 800, 1);
         this.setBackground("bg3.jpg");
+        addObject(new HurtObject(player), 500, 500);
+        addObject(new GameOverObject(), 500 , 200);
+        addObject(new Opnieuw(), 500, 600);
     }
     
 }
