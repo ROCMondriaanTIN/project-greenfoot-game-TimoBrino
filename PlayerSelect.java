@@ -21,16 +21,7 @@ public class PlayerSelect extends Actor {
         setImage("p" + player + "_stand.png");
         this.player = player;
     }
-
-    public PlayerSelect(String text, int size) {
-        setImage(new GreenfootImage(text, size, Color.YELLOW, new Color(0, 0, 0, 0), Color.RED));
-
-    }
-
-    /**
-     * Act - do whatever the PlayerSelect wants to do. This method is called
-     * whenever the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
     @Override
     public void act() {
         // Add your action code here.
@@ -49,7 +40,7 @@ public class PlayerSelect extends Actor {
                 }
             }
             if (Greenfoot.mouseClicked(this)) {
-                Greenfoot.setWorld(new LevelKeuze(1, player));
+                Greenfoot.setWorld(new LevelKeuze(1, player, true));
         }
     }
   }

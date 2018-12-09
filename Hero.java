@@ -135,7 +135,7 @@ public class Hero extends Mover {
                     break;
                 } 
                 if (tile.type == TileType.OPEN){
-                    Greenfoot.setWorld(new LevelKeuze(level + 1, player));
+                    Greenfoot.setWorld(new LevelKeuze(level + 1, player, false));
                 }
             }
         }

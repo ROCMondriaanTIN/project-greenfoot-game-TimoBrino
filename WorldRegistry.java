@@ -21,7 +21,7 @@ public class WorldRegistry {
     }
     
     public MyWorld getLevel(int index){
-        levels.putIfAbsent(index, new Level1());
+//        levels.putIfAbsent(index, new Level1());
         return levels.get(index);
     }
     public void setLevel(int index, MyWorld level){

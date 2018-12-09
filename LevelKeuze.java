@@ -14,13 +14,13 @@ import greenfoot.World;
 public class LevelKeuze extends World {
 
     int levelMax = 4;
-    int level = 1;
+    int level = 2;
     LevelKeuzeObject[] levelTrue = new LevelKeuzeObject[levelMax];
     LevelKeuzeObject[] levelfalse = new LevelKeuzeObject[levelMax];
     int y = 400;
     int x = 200;
 
-    public LevelKeuze(int level, int player) {
+    public LevelKeuze(int level, int player, boolean first) {
         super(1000, 800, 1);
         this.setBackground("bg2.png");
         if (this.level < level) {
