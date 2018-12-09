@@ -13,5 +13,11 @@ public enum TileType {
     GROUND,
     WATER,
     BOX,
+    CLOSED,
+    OPEN,
+    SILVERCOIN,
+    GOLDCOIN,
+    KEY,
+    GEM,
     // Add your own tile types here
 }

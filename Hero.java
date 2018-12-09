@@ -1,5 +1,6 @@
 
 import greenfoot.*;
+import java.util.List;
 
 /**
  *
@@ -20,7 +21,10 @@ public class Hero extends Mover {
     private int spawnY;
     private int player;
     private int coin = 0;
+    private boolean gotkey;
     private int level;
+    private int diamond;
+
 
     private GreenfootImage walkIm1;
     private GreenfootImage walkIm2;
@@ -54,6 +58,8 @@ public class Hero extends Mover {
         walkIm11 = new GreenfootImage("p1_walk11.png");
         jump1 = new GreenfootImage("p1_jump.png");
     }
+
+
 
     @Override
     public void act() {
@@ -100,28 +106,39 @@ public class Hero extends Mover {
 
     public void checkForBlock() {
         for (Tile tile : getIntersectingObjects(Tile.class)) {
+            
+        
             if (tile != null) {
-                String name = tile.getImage().toString();
-                if (name.contains("liquid") && !name.contains("Top")) {
+                if (tile.type == TileType.WATER) {
                     dood();
-                    break;
+                    return;
                 }
-                if (name.contains("Silver")) {
+                if (tile.type == TileType.SILVERCOIN) {
                     getWorld().removeObject(tile);
                     coin++;
                     getLives();
-                } else if (name.contains("Gold")) {
+                } else if (tile.type == TileType.GOLDCOIN) {
                     getWorld().removeObject(tile);
                     coin += 2;
                     getLives();
-                } else if (name.contains("gem")) {
+                } else if (tile.type == TileType.GEM) {
                     getWorld().removeObject(tile);
-                } else if (name.contains("key")) {
+                    diamond ++;
+                } else if (tile.type == TileType.KEY) {
                     getWorld().removeObject(tile);
+                    gotkey = true;
+                }else if (tile.type == TileType.CLOSED && gotkey) {
+                    tile.setImage("door_openMid.png");
+                    tile.setType(TileType.OPEN);
+                    getOneObjectAtOffset(tile.getImage().getWidth()/2, tile.getImage().getHeight() / 2 - 70, Tile.class).setImage("door_openTop.png");
+                    gotkey = false;
+                    break;
+                } 
+                if (tile.type == TileType.OPEN){
+                    Greenfoot.setWorld(new LevelKeuze(level + 1, player));
                 }
             }
         }
-
     }
 
     private double posToNeg(double x) {
@@ -247,4 +264,5 @@ public class Hero extends Mover {
         this.spawnY = heroSpawnY;
 
     }
+
 }

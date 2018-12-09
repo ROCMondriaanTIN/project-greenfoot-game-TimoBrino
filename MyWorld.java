@@ -23,7 +23,6 @@ public abstract class MyWorld extends World {
         if (firstTime) {
             firstTime = false;
             hero = new Hero();
-            firstTime = false;
         }
         this.setBackground("bg2.png");
     }
