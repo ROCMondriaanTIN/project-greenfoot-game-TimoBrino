@@ -1,11 +1,6 @@
 
 import greenfoot.Actor;
-import greenfoot.Color;
 import greenfoot.Greenfoot;
-import greenfoot.GreenfootImage;
-import greenfoot.MouseInfo;
-import java.util.List;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,7 +22,7 @@ public class HurtObject extends Actor {
      public void act() {
         // Add your action code here.
         if (getImage().toString().contains("hurt")) {
-            if (Greenfoot.mouseClicked(this)) {
+            if (Greenfoot.isKeyDown("space")) {
                 Greenfoot.setWorld(new BeginScherm());
             }
         }
