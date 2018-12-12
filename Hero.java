@@ -12,6 +12,7 @@ public class Hero extends Mover {
     private final double acc;
     private final double drag;
     private int width;
+    boolean gotSilver;
     private int lives = 2;
     private boolean isOnGround;
     private int walkStatus;
@@ -23,43 +24,24 @@ public class Hero extends Mover {
     private int coin = 0;
     private boolean gotkey;
     private int level;
-    private int diamond;
+    private int diamonds;
+    private Overlay overlay;
+    private CollisionEngine collisionEngine;
+    private TileEngine tileEngine;
 
 
-    private GreenfootImage walkIm1;
-    private GreenfootImage walkIm2;
-    private GreenfootImage walkIm3;
-    private GreenfootImage walkIm4;
-    private GreenfootImage walkIm5;
-    private GreenfootImage walkIm6;
-    private GreenfootImage walkIm7;
-    private GreenfootImage walkIm8;
-    private GreenfootImage walkIm9;
-    private GreenfootImage walkIm10;
-    private GreenfootImage walkIm11;
-    private GreenfootImage jump1;
-
-    public Hero() {
+    public Hero(Overlay overlay) {
         super();
         gravity = 9.8;
         acc = 0.6;
         drag = 0.8;
-
-        walkIm1 = new GreenfootImage("p1_walk1.png");
-        walkIm2 = new GreenfootImage("p1_walk2.png");
-        walkIm3 = new GreenfootImage("p1_walk3.png");
-        walkIm4 = new GreenfootImage("p1_walk4.png");
-        walkIm5 = new GreenfootImage("p1_walk5.png");
-        walkIm6 = new GreenfootImage("p1_walk6.png");
-        walkIm7 = new GreenfootImage("p1_walk7.png");
-        walkIm8 = new GreenfootImage("p1_walk8.png");
-        walkIm9 = new GreenfootImage("p1_walk9.png");
-        walkIm10 = new GreenfootImage("p1_walk10.png");
-        walkIm11 = new GreenfootImage("p1_walk11.png");
-        jump1 = new GreenfootImage("p1_jump.png");
+        this.overlay = overlay;
     }
 
-
+    public void addTileEngine(CollisionEngine collisionEngine, TileEngine tileEngine) {
+        this.collisionEngine = collisionEngine;
+        this.tileEngine = tileEngine;
+    }
 
     @Override
     public void act() {
@@ -111,31 +93,55 @@ public class Hero extends Mover {
             if (tile != null) {
                 if (tile.type == TileType.WATER) {
                     dood();
-                    return;
+                    break;
                 }
                 if (tile.type == TileType.SILVERCOIN) {
                     getWorld().removeObject(tile);
                     coin++;
+                    gotSilver = true;
                     getLives();
+                    if (coin != 0) {
+                        overlay.addCoin("Silver");
+                    }
+                    break;
                 } else if (tile.type == TileType.GOLDCOIN) {
                     getWorld().removeObject(tile);
                     coin += 2;
                     getLives();
-                } else if (tile.type == TileType.GEM) {
+                    if (coin != 0) {
+                        overlay.addCoin("Gold");
+                    }
+                    break;
+                }
+                else if (tile.type == TileType.GEM) {
                     getWorld().removeObject(tile);
-                    diamond ++;
-                } else if (tile.type == TileType.KEY) {
+                    diamonds ++;
+                    overlay.addDiamant("Blue");
+                    DiamantsGot.getInstance().gotDiamand(level, tile.getColom(), tile.getRow());
+                    break;
+                } 
+                else if (tile.type == TileType.KEY) {
                     getWorld().removeObject(tile);
                     gotkey = true;
-                }else if (tile.type == TileType.CLOSED && gotkey) {
+                    overlay.gotKey("Yellow");
+                    break;
+                }
+                else if (tile.type == TileType.CLOSED && gotkey) {
                     tile.setImage("door_openMid.png");
                     tile.setType(TileType.OPEN);
+                    overlay.openedDoor();
                     getOneObjectAtOffset(tile.getImage().getWidth()/2, tile.getImage().getHeight() / 2 - 70, Tile.class).setImage("door_openTop.png");
                     gotkey = false;
                     break;
                 } 
                 if (tile.type == TileType.OPEN){
-                    Greenfoot.setWorld(new LevelKeuze(level + 1, player, false));
+                       if (level < 4) {
+                        Greenfoot.setWorld(new LevelKeuze(level + 1, player, false));
+                        
+                    } else {
+                        Greenfoot.setWorld(new EindScherm(diamonds));
+                    }
+                    
                 }
             }
         }
@@ -227,6 +233,7 @@ public class Hero extends Mover {
         lives--;
         if (lives > 0) {
             setLocation(spawnX, spawnY);
+            overlay.removeLive();
         } else {
             Greenfoot.setWorld(new GameOver(player));
         }
@@ -237,6 +244,7 @@ public class Hero extends Mover {
         if (coin >= 40) {
             lives++;
             coin -= 40;
+            overlay.extraLeven();
         }
     }
 
@@ -249,6 +257,7 @@ public class Hero extends Mover {
         setImage("p2_stand.png");
         setImage("p3_stand.png");
         this.player = player;
+        overlay.setPlayer(player, lives);
     }
 
     public int getWidth() {

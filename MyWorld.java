@@ -10,6 +10,9 @@ public abstract class MyWorld extends World {
     private CollisionEngine ce;
     int map[][];
     static protected Hero hero;
+    static protected Overlay overlay;
+    TileEngine te;
+    Camera camera;
     int player = 1;
     public static boolean firstTime = true;
 
@@ -21,7 +24,8 @@ public abstract class MyWorld extends World {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1, false);
         if (firstTime) {
-            hero = new Hero();
+            overlay = new Overlay(player);
+            hero = new Hero(overlay);
             firstTime = false;
         }
         this.setBackground("bg2.png");
@@ -39,13 +43,15 @@ public abstract class MyWorld extends World {
 
         addObject(camera, 0, 0);
         addObject(hero, heroSpawnX, heroSpawnY);
-//        addObject(overlay, 0, 0);
+        addObject(overlay, getWidth() / 2, getHeight() / 2);
+        hero.addTileEngine(ce, te);
         camera.act();
         hero.act();
 
         ce = new CollisionEngine(te, camera);
 
         ce.addCollidingMover(hero);
+        setPaintOrder(Overlay.class);
     }
 
     @Override

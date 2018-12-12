@@ -24,9 +24,11 @@ public class BeginScherm extends World{
         this.setBackground("bg2.png");
         createObject();
         setLevels();
+        DiamantsGot.getInstance().reset();
     }
      public void createObject() {
         addObject(new Titel(), 475, 200);
+        addObject(new InfoKnop(), 100, 50);
 
         addObject(new PlayerSelect(1), 150, 500);
         addObject(new PlayerSelect(2), 500, 500);
@@ -37,7 +39,8 @@ public class BeginScherm extends World{
         MyWorld.firstTime = true;
         worldRegistry.registerLevel(1, new Level1());
         worldRegistry.registerLevel(2, new Level2());
-       
+        worldRegistry.registerLevel(3, new Level3());
+        worldRegistry.registerLevel(4, new Level4());
         
     }
     
